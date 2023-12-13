@@ -14,17 +14,7 @@ ________
 - [Automatic installation](#automatic-installation)
 - [Manual installation](#manual-installation)
 
-[Scan on pull request](#scan-on-pull-request)
-- [View results](#view-results-1)
-- [Customizations](#customizations-1)
 
-[Scheduled scans](#scheduled-scans)
-- [View results](#view-results-2)
-- [Customizations](#customizations-2)
-
-[Scan on release](#scan-on-release)
-- [View results](#view-results-3)
-- [Customizations](#customizations-3)
 
 
 ________
@@ -39,39 +29,52 @@ ________
 
 ## Installation
 
-OSV-Scanner can either 
+OSV-Scanner has a primary GitHub action that scans the repository and can be configured to scan on a schedule or on release. OSV-Scanner also has a secondary GitHub Action that performs a scan on pull request and reports newly introduced vulnerabilities. 
+
+The primary GitHub Action can be installed [automatically](#automatic-installation) or [manually](#manual-installation). 
+
+The secondary GitHub Action that runs on pull request must be installed [manually](#manual-installation)
 
 ### Automatic installation
-1) From your GitHub project's main page, click “Security” tab in the navigation bar.
 
-![Select the security tab on the repository navigation bar.](./images/security-tab.png)
+1) From your GitHub project's main page, click “Actions” tab in the navigation bar.
 
-2) In the "Vulnerability alerts" navigation section, select "Code scanning".
+![Select the actions tab on the repository navigation bar.](./images/actions-tab.png)
 
-![Image indicates the location of the code scanning selction.](./images/code-scanning.png)
+2) Scroll to the "Security actions" section and click on "View all". This will take you to a url in the form `https://www.github.com/{username}/{repository}/actions/new?category=security` 
 
-3) Select the "Configure scanning tool" button.
+![Image indicates the location of the security actions section and the "view all" link.](./images/security-actions.png)
 
-![Image indicates the location of the "Configure scanning tool" button.](./images/configure-tools.png)
+3) Search for "OSV-Scanner". 
 
-4) In the "Code scanning" section under "Tools" select the "explore workflows" link.
+![Image shows the GitHub Actions search bar.](./images/actions-tab.png)
 
-![Image indicates the location of the "explore workflows link](./images/explore-workflows.png)
+4) Choose the "OSV-Scanner" from the list of workflows, and then click “Configure”.
 
-5) 
+TODO: Insert image
 
-TODO: insert screenshot
+5) Commit the changes.
+
+TODO: Insert image
+
+Follow the [configuration](#configuration) instructions to specify how you want the scanner to work. 
+
 ### Manual installation
 
-## Scan on pull request
-### View results
-### Customizations
+To manually install a GitHub action, create a new `.yml` file in the `.github/workflows` folder. 
 
-## Scheduled scans
-### View results
-### Customizations
+#### Manually install scheduled scan
 
-## Scan on release
-### View results
-### Customizations
+To manually install the scheduled scan create an `action.yml` file in the `.github/workflows` folder. Include the contents of {TODO link to the appropriate file}. The scheduled scan GitHub Action may also be installed [automatically](#automatic-installation).
 
+#### Manually install pull request scan
+To manually install the pull request scan, create an `osv-scanner-pr.yml` file in the `.github/workflows` folder. Include the contents of {TODO link to appropriate files. }
+
+## Configuration
+### Scan on pull request
+### Scan on schedule
+### Scan on release
+## View results
+### Scan on pull request
+### Scan on schedule
+### Scan on release
