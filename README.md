@@ -1,41 +1,34 @@
-# OSV-Scanner GitHub Action
+[OSV-Scanner](https://google.github.io/osv-scanner/) is offered as a GitHub Action that can be configured to do the following:
 
-[OSV-Scanner](www.github.com/google/osv-scanner) offers two GitHub Actions:
-
-1. An action that triggers a scan with each pull request and will only check for new vulnerabilities introduced through the pull request.
-2. An action that performs a single vulnerability scan, which can be configured to scan on a regular schedule, or used as a check on releases to prevent releasing with known vulnerabilities in dependencies.
-
-Both actions are free for all repositories. 
+1. Trigger a scan with each [pull request](#scan-on-pull-request) and will only report new open source vulnerabilities introduced through the pull request.
+2. Perform a full vulnerability scan, configured to run on a [regular schedule](#scheduled-scan).
 
 ________
-[OSV-Scanner](#osv-scanner)
+[Scan on pull request](#scan-on-pull-request)
+
+[Scheduled scan](#scheduled-scan)
 
 [Installation](#installation)
-- [Automatic installation](#automatic-installation)
-- [Manual installation](#manual-installation)
+- [Automatic Installation](#workflow-setup-required)
+- [Manual Installation](#authentication-with-fine-grained-pat-optional)
 
+[Customization](#customization)
 
-
-
+[View results](#view-results)
 ________
 
-## OSV-Scanner
-[OSV-Scanner](https://google.github.io/osv-scanner) provides an officially supported frontend to the [OSV database](https://osv.dev) that connects a project’s list of dependencies with the vulnerabilities that affect them. Since the OSV database is open source and distributed, it has several benefits in comparison with closed source advisory databases and scanners:
+## Scan on pull request
+Scanning your project on each pull request can help you keep vulnerabilities out of your project. The pull request scan compares a vulnerability scan of the target branch to a vulnerability scan of the feature branch, and will fail if there are new vulnerabilities introduced through the feature branch. You may choose to [prevent merging](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches#require-status-checks-before-merging) if new vulnerabilities are introduced, but by default the check will only warn users.
 
-- Each advisory comes from an open and authoritative source (e.g. the [RustSec Advisory Database](https://github.com/rustsec/advisory-db))
-- Anyone can suggest improvements to advisories, resulting in a very high quality database
-- The OSV format unambiguously stores information about affected versions in a machine-readable format that precisely maps onto a developer’s list of packages
-
+## Scheduled scan
+Regularly scanning your project for vulnerabilities can alert you to new vulnerabilities in your dependency tree. The scheduled scan will scan your project on a set schedule and report all known vulnerabilities. If vulnerabilities are found the action will return a failed status.
 
 ## Installation
 
-OSV-Scanner has a primary GitHub action that scans the repository and can be configured to scan on a schedule or on release. OSV-Scanner also has a secondary GitHub Action that performs a scan on pull request and reports newly introduced vulnerabilities. 
-
-The primary GitHub Action can be installed [automatically](#automatic-installation) or [manually](#manual-installation). 
-
-The secondary GitHub Action that runs on pull request must be installed [manually](#manual-installation)
+The OSV-Scanner GitHub Action can be [automatically](#automatic-installation) or [manually](#manual-installation) installed. 
 
 ### Automatic installation
+
 
 1) From your GitHub project's main page, click “Actions” tab in the navigation bar.
 
@@ -57,24 +50,26 @@ TODO: Insert image
 
 TODO: Insert image
 
-Follow the [configuration](#configuration) instructions to specify how you want the scanner to work. 
+6) Configure the workflow
+
+The automatically installed GitHub Action includes functionality for both a [scheduled scan](#scheduled-scan) and a [scan on pull request](#scan-on-pull-request). 
+
+If you only want a scheduled scan, you can comment out the "scan-pr" job and only run the action on "schedule" and on "push". 
+
+If you only want to run a scan on pull request, you can comment out the "scan-scheduled" job and only run the action on "pull request" and "merge group". 
+
+If you want both, you can leave the action as is. If you want these functionalities to be seperate for tracking purposes, we recommend following the [manual installation instructions](#manual-installation). 
 
 ### Manual installation
 
-To manually install a GitHub action, create a new `.yml` file in the `.github/workflows` folder. 
+To manually install the GitHub Action, please follow instructions on our [main documentation page](https://google.github.io/osv-scanner/github-action/).
 
-#### Manually install scheduled scan
+## Customization
 
-To manually install the scheduled scan create an `action.yml` file in the `.github/workflows` folder. Include the contents of {TODO link to the appropriate file}. The scheduled scan GitHub Action may also be installed [automatically](#automatic-installation).
+To learn more about optional inputs for the GitHub Action, please see our [main documentation page](https://google.github.io/osv-scanner/github-action/#customization).
 
-#### Manually install pull request scan
-To manually install the pull request scan, create an `osv-scanner-pr.yml` file in the `.github/workflows` folder. Include the contents of {TODO link to appropriate files. }
-
-## Configuration
-### Scan on pull request
-### Scan on schedule
-### Scan on release
 ## View results
-### Scan on pull request
-### Scan on schedule
-### Scan on release
+
+Maintainers can review results of scheduled scans by navigating to their project's `security > code scanning` tab. Vulnerability details can also be viewed by clicking on the details of the failed action.
+
+For pull request scans, results may be viewed by clicking on the details of the failed action, either from your project's actions tab or directly on the PR. Results are also included in GitHub annotations on the "Files changed" tab for the PR.
