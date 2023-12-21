@@ -29,7 +29,6 @@ The OSV-Scanner GitHub Action can be [automatically](#automatic-installation) or
 
 ### Automatic installation
 
-
 1) From your GitHub project's main page, click “Actions” tab in the navigation bar.
 
 ![Select the actions tab on the repository navigation bar.](./images/actions-tab.png)
