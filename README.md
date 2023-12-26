@@ -69,6 +69,6 @@ To learn more about optional inputs for the GitHub Action, please see our [main 
 
 ## View results
 
-Maintainers can review results of scheduled scans by navigating to their project's `security > code scanning` tab. Vulnerability details can also be viewed by clicking on the details of the failed action.
+Maintainers can review results of scheduled scans by navigating to their project's `Security > Code Scanning` tab. Vulnerability details can also be viewed by clicking on the details of the failed action.
 
 For pull request scans, results may be viewed by clicking on the details of the failed action, either from your project's actions tab or directly on the PR. Results are also included in GitHub annotations on the "Files changed" tab for the PR.
