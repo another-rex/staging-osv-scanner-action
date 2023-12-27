@@ -6,3 +6,4 @@ OSV-Scanner is offered as a GitHub Action. We currently have two different GitHu
 2. An action that performs a single vulnerability scan, which can be configured to scan on a regular schedule, or used as a check on releases to prevent releasing with known vulnerabilities in dependencies.
 
 ## TODO
+
