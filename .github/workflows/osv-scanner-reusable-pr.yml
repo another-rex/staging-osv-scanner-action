@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-name: OSV-Scanner PR Scanning
-description: "OSV-Scanner PR scanning reusable workflow, can be used as a PR action to detect new vulnerabilities being introduced."
+# OSV-Scanner PR scanning reusable workflow, can be used as a PR action to detect new vulnerabilities being introduced.
+name: "OSV-Scanner PR Scanning"
 
 permissions:
   contents: read
