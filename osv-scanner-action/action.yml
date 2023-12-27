@@ -29,4 +29,3 @@ runs:
   # image: "ghcr.io/google/osv-scanner-action:staging"
   args:
     - ${{ inputs.scan-args }}
-
