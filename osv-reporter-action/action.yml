@@ -22,7 +22,8 @@ inputs:
     required: true
 runs:
   using: "docker"
-  image: "ghcr.io/google/osv-scanner-action:v1.5.0"
+  image: "google/osv-scanner/action.dockerfile:staging"
+  # image: "ghcr.io/google/osv-scanner-action:staging"
   entrypoint: /root/osv-reporter
   args:
     - "${{ inputs.scan-args }}"
