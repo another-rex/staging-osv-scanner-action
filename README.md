@@ -9,8 +9,8 @@ ________
 [Scheduled scan](#scheduled-scan)
 
 [Installation](#installation)
-- [Automatic Installation](#workflow-setup-required)
-- [Manual Installation](#authentication-with-fine-grained-pat-optional)
+- [Automatic Installation](#automatic-installation)
+- [Manual Installation](#manual-installation)
 
 [Customization](#customization)
 
