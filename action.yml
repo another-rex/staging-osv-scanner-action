@@ -14,5 +14,5 @@
 
 # Not intended to be used directly, see action.yml at the root of this repository
 # for a workflow which uses osv-scanner.
-name: "osv-scanner"
-description: "Scans your directory against the OSV database. Please use the reusable workflow in .github/workflows/reusable/osv-scanner-reusable.yml"
+name: "test-osv-scanner"
+description: "[Experimental] Scans your directory against the OSV database."
